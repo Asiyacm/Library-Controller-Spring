@@ -51,4 +51,13 @@ public class LibraryController {
 
     }
 
+
+    @GetMapping("/issue")
+
+    public String bookIssue(){
+
+        return("Welcome to Library Book Issue page");
+
+    }
+
 }
