@@ -76,4 +76,13 @@ public class LibraryController {
         return("Welcome to Library Book Edit page");
 
     }
+
+
+    @GetMapping("/delete")
+
+    public String bookDelete(){
+
+        return("Welcome to Library Book Delete page");
+
+    }
 }
