@@ -27,4 +27,12 @@ public class LibraryController {
     }
 
 
+    @GetMapping("/usersignup")
+
+    public String UserSignuppage(){
+
+        return("Welcome to Library User Signup page");
+
+    }
+
 }
