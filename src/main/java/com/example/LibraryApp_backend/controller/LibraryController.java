@@ -43,4 +43,12 @@ public class LibraryController {
 
     }
 
+    @GetMapping("/view")
+
+    public String bookView(){
+
+        return("Welcome to Library Book View page");
+
+    }
+
 }
