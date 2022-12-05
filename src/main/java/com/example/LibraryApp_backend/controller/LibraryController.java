@@ -35,4 +35,12 @@ public class LibraryController {
 
     }
 
+    @GetMapping("/add")
+
+    public String bookAdd(){
+
+        return("Welcome to Library Book Adding page");
+
+    }
+
 }
