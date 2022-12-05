@@ -68,4 +68,12 @@ public class LibraryController {
         return("Welcome to Library Book Search page");
 
     }
+
+    @GetMapping("/edit")
+
+    public String bookEdit(){
+
+        return("Welcome to Library Book Edit page");
+
+    }
 }
