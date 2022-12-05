@@ -60,4 +60,12 @@ public class LibraryController {
 
     }
 
+
+    @GetMapping("/search")
+
+    public String bookSearch(){
+
+        return("Welcome to Library Book Search page");
+
+    }
 }
