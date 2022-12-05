@@ -2,6 +2,7 @@ package com.example.LibraryApp_backend.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LibraryController {
 
 
-    @GetMapping("/")
+    @PostMapping("/")
 
     public String Adminpage(){
 
@@ -18,7 +19,7 @@ public class LibraryController {
 
     }
 
-    @GetMapping("/userlogin")
+    @PostMapping("/userlogin")
 
     public String UserLoginpage(){
 
@@ -27,7 +28,7 @@ public class LibraryController {
     }
 
 
-    @GetMapping("/usersignup")
+    @PostMapping("/usersignup")
 
     public String UserSignuppage(){
 
@@ -35,7 +36,7 @@ public class LibraryController {
 
     }
 
-    @GetMapping("/add")
+    @PostMapping("/add")
 
     public String bookAdd(){
 
@@ -52,7 +53,7 @@ public class LibraryController {
     }
 
 
-    @GetMapping("/issue")
+    @PostMapping("/issue")
 
     public String bookIssue(){
 
@@ -61,7 +62,7 @@ public class LibraryController {
     }
 
 
-    @GetMapping("/search")
+    @PostMapping("/search")
 
     public String bookSearch(){
 
@@ -69,7 +70,7 @@ public class LibraryController {
 
     }
 
-    @GetMapping("/edit")
+    @PostMapping("/edit")
 
     public String bookEdit(){
 
@@ -78,7 +79,7 @@ public class LibraryController {
     }
 
 
-    @GetMapping("/delete")
+    @PostMapping("/delete")
 
     public String bookDelete(){
 
