@@ -1,16 +1,20 @@
 package com.example.LibraryApp_backend.controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.LibraryApp_backend.Model.Library;
+import com.example.LibraryApp_backend.dao.LibraryDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
 
 @RestController
 
 
 public class LibraryController {
 
-
+@CrossOrigin(origins = "*")
     @PostMapping("/")
 
     public String Adminpage(){
@@ -18,7 +22,7 @@ public class LibraryController {
         return("Welcome to Library Adminpage");
 
     }
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/userlogin")
 
     public String UserLoginpage(){
@@ -27,7 +31,7 @@ public class LibraryController {
 
     }
 
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/usersignup")
 
     public String UserSignuppage(){
@@ -36,23 +40,28 @@ public class LibraryController {
 
     }
 
-    @PostMapping("/add")
+@Autowired
+private LibraryDao dao;
+    @CrossOrigin(origins = "*")
+    @PostMapping(path="/add",consumes = "application/json",produces = "application/json")
 
-    public String bookAdd(){
-
-        return("Welcome to Library Book Adding page");
+    public HashMap<String,String> bookAdd(@RequestBody Library l){
+        System.out.println(l.getTitle().toString());
+        dao.save(l);
+        HashMap<String,String> map= new HashMap<>();
+        map.put("status","success");
+        return map;
 
     }
-
+    @CrossOrigin(origins = "*")
     @GetMapping("/view")
 
-    public String bookView(){
-
-        return("Welcome to Library Book View page");
+    public List<Library> bookView(){
+        return(List<Library>) dao.findAll();
 
     }
 
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/issue")
 
     public String bookIssue(){
@@ -61,15 +70,15 @@ public class LibraryController {
 
     }
 
-
-    @PostMapping("/search")
-
-    public String bookSearch(){
-
-        return("Welcome to Library Book Search page");
+    @CrossOrigin(origins = "*")
+    @PostMapping(path="/search",consumes = "application/json",produces = "application/json")
+    public List<Library>  bookSearch(@RequestBody Library l){
+        String title= l.getTitle();
+        System.out.println(title);
+        return(List<Library>) dao.searchBook(l.getTitle());
 
     }
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/edit")
 
     public String bookEdit(){
@@ -78,7 +87,7 @@ public class LibraryController {
 
     }
 
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/delete")
 
     public String bookDelete(){
