@@ -95,4 +95,16 @@ private LibraryDao dao;
         return("Welcome to Library Book Delete page");
 
     }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path="/delete",consumes = "application/json",produces = "application/json")
+    public HashMap<String,String>  bookDelete(@RequestBody Library l){
+        String id= String.valueOf(l.getId());
+        System.out.println(id);
+        dao.deleteBook(l.getId());
+        HashMap<String,String> map= new HashMap<>();
+        map.put("status","success");
+        return map;
+
+    }
 }
