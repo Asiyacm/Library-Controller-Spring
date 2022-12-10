@@ -23,9 +23,11 @@ public class LibraryController {
     private UserRegisterDao dao1;
 
    @CrossOrigin(origins = "*")
-   @PostMapping("/")
-    public String Adminpage(){
-       return("Welcome to Library Adminpage");
+   @PostMapping(path = "/", consumes = "application/json", produces = "application/json")
+   public HashMap<String, String> Adminpage(@RequestBody UserRegister u){
+       HashMap<String, String> map = new HashMap<>();
+       map.put("status", "success");
+       return map;
    }
 
     @CrossOrigin(origins = "*")
@@ -33,6 +35,7 @@ public class LibraryController {
     public String UserLoginpage(){
     return("Welcome to Library UserLoginpage");
    }
+
 
     @CrossOrigin(origins = "*")
     @PostMapping(path="/usersignup",consumes = "application/json",produces = "application/json")
@@ -42,6 +45,13 @@ public class LibraryController {
         dao1.save(u);
     return("Welcome to Library User Signup page");
    }
+
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/userview")
+    public List<UserRegister> userView(){
+        return(List<UserRegister>) dao1.findAll();
+    }
 
     @CrossOrigin(origins = "*")
     @PostMapping(path="/add",consumes = "application/json",produces = "application/json")
