@@ -39,11 +39,13 @@ public class LibraryController {
 
     @CrossOrigin(origins = "*")
     @PostMapping(path="/usersignup",consumes = "application/json",produces = "application/json")
-    public String UserSignuppage(@RequestBody UserRegister u){
+    public HashMap<String,String>UserSignuppage(@RequestBody UserRegister u){
     System.out.println(u.getName().toString());
         System.out.println(u.getName());
         dao1.save(u);
-    return("Welcome to Library User Signup page");
+        HashMap<String,String> map= new HashMap<>();
+        map.put("status","success");
+        return map;
    }
 
 
@@ -51,6 +53,27 @@ public class LibraryController {
     @GetMapping("/userview")
     public List<UserRegister> userView(){
         return(List<UserRegister>) dao1.findAll();
+    }
+
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path="/usersearch",consumes = "application/json",produces = "application/json")
+    public List<UserRegister>  userSearch(@RequestBody  UserRegister u){
+        String name= u.getName();
+        System.out.println(name);
+        return(List<UserRegister>) dao1.searchUser(u.getName());
+    }
+
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(path="/userdelete",consumes = "application/json",produces = "application/json")
+    public HashMap<String,String> deleteUser(@RequestBody UserRegister u) {
+        String id = String.valueOf(u.getId());
+        System.out.println(id);
+        dao1.deleteUser(u.getId());
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "success");
+        return map;
     }
 
     @CrossOrigin(origins = "*")
